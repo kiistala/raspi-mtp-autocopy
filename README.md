@@ -84,4 +84,5 @@ tbd
 -----
 
 ## Sources
-udev rule, mtpfs: http://choorucode.com/2013/12/23/how-to-mount-moto-g-on-ubuntu-using-mtp/
+udev rule, mtpfs: http://www.omgubuntu.co.uk/2011/12/how-to-connect-your-android-ice-cream-sandwich-phone-to-ubuntu-for-file-access
+
