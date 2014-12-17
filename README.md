@@ -46,8 +46,9 @@ sudo mtp-detect
 lsusb
 ```
 I'm using Samsung Tab 3:
-IdVendor: 04e8
-IdProduct: 6860
+
+* IdVendor: 04e8
+* IdProduct: 6860
 
 When you have the IDs, add a udev rule. My command was:
 ```
