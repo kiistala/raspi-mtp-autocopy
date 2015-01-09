@@ -88,8 +88,9 @@ tbd
 
 With this script you can shutdown RasPi safely. Unplugging a chosen USB device initiates shutdown sequence.
 
-Install dependencies and download the script:
+Install dependencies and download the script into home directory of user pi:
 ```
+cd
 sudo apt-get -y install python-gi python-gobject python-gudev
 wget -nc https://raw.githubusercontent.com/kiistala/unplug2shutdown/master/src/unplug2shutdown.py
 chmod -v u+x unplug2shutdown.py
