@@ -84,6 +84,70 @@ tbd
 
 -----
 
-## Sources
+# Safe shutdowns with unplug2shutdown
+
+With this script you can shutdown RasPi safely. Unplugging a chosen USB device initiates shutdown sequence.
+
+Install dependencies and download the script:
+```
+sudo apt-get -y install python-gi python-gobject python-gudev
+wget -nc https://raw.githubusercontent.com/kiistala/unplug2shutdown/master/src/unplug2shutdown.py
+chmod -v u+x unplug2shutdown.py
+```
+
+Configure your shutdown device:
+```
+sudo ./unplug2shutdown.py --configure
+```
+Now, the script waits for you to insert a USB device:
+
+```
+Please connect the USB device you want to use as handler to shutdown your Raspberry Pi.
+It could be anything: a Flash Disk, MMC Adapter, Wireless Adapter, etc.
+```
+
+And as it's inserted:
+
+```
+You chose this device:
+
+    USB_Mass_Storage_Device
+    USBest_Technology_USB_Mass_Storage_Device_000000000000D4
+
+Press [Enter] to confirm this device, or pluginanother one or [CTRL + C] to exit
+Got ya
+Configuration have been saved.
+RaspberryPi will shutdown by removing: USB_Mass_Storage_Device
+Bye!
+```
+
+The unplug2shutdown script needs to be started on every boot, so let's add a line to /etc/rc.local:
+
+```
+/usr/bin/python /home/pi/unplug2shutdown.py &
+```
+
+Check the script permissions:
+```
+sudo chmod 755 /home/pi/unplug2shutdown.py
+```
+
+Test first without reboot:
+```
+sudo python /home/pi/unplug2shutdown.py &
+# Insert and remove the USB device. See if the system halts.
+```
+If that worked, then reboot and test again, now without starting the script manually.
+```
+sudo reboot
+```
+
+
+-----
+
+# Sources
 udev rule, mtpfs: http://www.omgubuntu.co.uk/2011/12/how-to-connect-your-android-ice-cream-sandwich-phone-to-ubuntu-for-file-access
 
+unplug2shutdown: http://www.claudiodangelis.com/2013/how-i-shutdown-my-raspberrypi/
+
+Executing a script on startup: http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up
