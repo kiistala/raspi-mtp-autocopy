@@ -79,8 +79,26 @@ sudo adduser $USER fuse
 
 ## Setup the Auto Copy
 
-tbd
+### Auto-mount of backup drives
 
+Install usbmount so that usb drives will mount at /media/usb:
+```
+sudo apt-get install usbmount
+```
+
+### copier.sh
+
+Download copier.sh to the RasPi:
+```
+cd
+wget -nc https://raw.githubusercontent.com/kiistala/raspi-mtp-autocopy/master/copier.sh
+```
+
+### Auto-executing copier.sh
+
+Now we need to trigger the copier.sh script every time a tablet is connected.
+
+(tbd)
 
 -----
 
@@ -148,6 +166,8 @@ sudo reboot
 
 # Sources
 udev rule, mtpfs: http://www.omgubuntu.co.uk/2011/12/how-to-connect-your-android-ice-cream-sandwich-phone-to-ubuntu-for-file-access
+
+Mounting USB drive automatically: http://unix.stackexchange.com/questions/24731/automounting-usb-sticks-on-debian
 
 unplug2shutdown: http://www.claudiodangelis.com/2013/how-i-shutdown-my-raspberrypi/
 
