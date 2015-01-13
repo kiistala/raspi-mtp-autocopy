@@ -73,7 +73,7 @@ sudo sed -i 's/^#user_allow_other/user_allow_other/' /etc/fuse.conf
 sudo mkdir /media/SamsungTab3
 sudo chmod a+rwx /media/SamsungTab3
 
-# This should add user "pi" to "fuse" group
+# This should add user "pi" to "fuse" group:
 sudo adduser $USER fuse
 ```
 
@@ -98,7 +98,25 @@ wget -nc https://raw.githubusercontent.com/kiistala/raspi-mtp-autocopy/master/co
 
 Now we need to trigger the copier.sh script every time a tablet is connected.
 
-(tbd)
+Download connect2backup.py script:
+```
+cd
+wget -nc https://raw.githubusercontent.com/kiistala/raspi-mtp-autocopy/master/connect2backup.py
+```
+
+Add a line to /etc/rc.local:
+
+```
+/usr/bin/python /home/pi/connect2backup.py &
+```
+
+Restart and test:
+
+1. Start the RasPi
+2. Connect a USB drive. The CSV files will be copied from tablet to the USB drive.
+3. Connect a Samsung Galaxy Tab 3 tablet
+4. Wait until the light in the USB drive stops blinking – copying has finished
+5. Disconnect the tablet
 
 -----
 
